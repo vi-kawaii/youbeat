@@ -2,14 +2,14 @@ import Layout from "../components/Layout";
 import Header from "../components/Header";
 import Head from "next/head";
 
-export default function Home() {
+export default function New() {
   return (
     <>
       <Head>
-        <title>YouBeat</title>
+        <title>Новый трек</title>
       </Head>
-      <Header home />
-      <Layout>Привет мир</Layout>
+      <Header />
+      <Layout>Создание нового трека</Layout>
     </>
   );
 }
