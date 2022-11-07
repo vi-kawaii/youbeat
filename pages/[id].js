@@ -5,6 +5,8 @@ import Layout from "../components/Layout";
 import fetcher from "../utils/fetcher";
 import YouTube from "react-youtube";
 import { opts } from "../utils/yt";
+import { useEffect, useState } from "react";
+import classNames from "classnames";
 
 export default function Track({ id }) {
   const { data } = useSWR("/tracks.json", fetcher);
@@ -15,6 +17,12 @@ export default function Track({ id }) {
       }`,
     fetcher
   );
+
+  const [mount, setMount] = useState(false);
+
+  useEffect(() => {
+    setMount(true);
+  }, []);
 
   if (!data) {
     return "Загрузка...";
@@ -29,11 +37,15 @@ export default function Track({ id }) {
       <Layout>
         <div className="flex flex-col h-[calc(100vh-180px)]">
           <div className="flex-grow">
-            <YouTube
-              iframeClassName="w-full aspect-video"
-              videoId={data.find((v) => v.id === id).video}
-              opts={opts}
-            />
+            {mount && (
+              <YouTube
+                iframeClassName={classNames({
+                  "w-full aspect-video rounded-2xl": mount,
+                })}
+                videoId={data.find((v) => v.id === id).video}
+                opts={opts}
+              />
+            )}
           </div>
           <div className="flex gap-2 h-10">
             <button className="font-bold select-none text-xl text-black bg-red-500 w-full rounded-full">

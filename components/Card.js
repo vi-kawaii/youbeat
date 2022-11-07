@@ -12,8 +12,8 @@ export default function Card({ v }) {
   if (!data) {
     return (
       <div>
-        <div className="relative aspect-video bg-neutral-700"></div>
-        <div className="mt-2 bg-neutral-700">&nbsp;</div>
+        <div className="rounded-2xl relative aspect-video bg-neutral-700"></div>
+        <div className="mt-2 bg-neutral-700 rounded-2xl">&nbsp;</div>
         <div className="mb-4">&nbsp;</div>
       </div>
     );
@@ -23,10 +23,12 @@ export default function Card({ v }) {
     <Link href={`/${v.id}`} className="block first:pt-0">
       <div className="relative aspect-video">
         <Image
+          className="rounded-2xl"
           alt=""
           src={data.thumbnail_url}
           fill
           style={{ objectFit: "cover" }}
+          sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw,33vw"
         />
       </div>
       <div className="mt-2">{data.title}</div>

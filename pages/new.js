@@ -33,7 +33,7 @@ export default function New() {
               />
             )}
           </div>
-          <button className="bg-neutral-700 w-full rounded-full py-2">
+          <button className="bg-red-500 w-full rounded-full py-2">
             Создать
           </button>
         </div>
