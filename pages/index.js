@@ -18,8 +18,8 @@ export default function Home() {
       <Layout>
         <div className="divide-y divide-neutral-500">
           {data ? (
-            data.map((v) => (
-              <div>
+            data.map((v, i) => (
+              <div key={i}>
                 <YouTube
                   className="mt-4"
                   iframeClassName="w-full aspect-video"
