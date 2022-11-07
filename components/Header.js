@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { PlusCircleIcon, XCircleIcon } from "@heroicons/react/24/outline";
+import { PlusIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
 export default function Header({ home }) {
   return (
@@ -31,11 +31,11 @@ export default function Header({ home }) {
       <div className="ml-auto">
         {home ? (
           <Link href="/new">
-            <PlusCircleIcon className="w-6" />
+            <PlusIcon className="w-6" />
           </Link>
         ) : (
           <Link href="/">
-            <XCircleIcon className="w-6" />
+            <XMarkIcon className="w-6" />
           </Link>
         )}
       </div>
