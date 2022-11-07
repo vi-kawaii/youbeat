@@ -47,7 +47,7 @@ export default function Track({ id }) {
               />
             )}
           </div>
-          <div className="flex gap-2 h-10">
+          <div className="flex gap-2 h-20">
             <button className="font-bold select-none text-xl text-black bg-red-500 w-full rounded-full">
               D
             </button>
