@@ -13,14 +13,14 @@ export default function New() {
   return (
     <>
       <Head>
-        <title>Новый трек</title>
+        <title>Новый трек - YouBeat</title>
       </Head>
       <Header />
       <Layout>
-        <div className="flex flex-col h-[calc(100vh-100px)]">
+        <div className="flex flex-col h-[calc(100vh-180px)]">
           <div className="flex-grow">
             <input
-              className="rounded-full py-2 px-4 w-full mb-6"
+              className="rounded-full py-2 px-4 w-full mb-6 mt-6 bg-neutral-700"
               placeholder="Ссылка на видео"
               onChange={changeVideoURL}
               value={videoURL}
@@ -33,7 +33,7 @@ export default function New() {
               />
             )}
           </div>
-          <button className="bg-red-500 w-full rounded-full py-2">
+          <button className="bg-neutral-700 w-full rounded-full py-2">
             Создать
           </button>
         </div>

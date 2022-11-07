@@ -1,10 +1,9 @@
 import Layout from "../components/Layout";
 import Header from "../components/Header";
+import Card from "../components/Card";
 import Head from "next/head";
 import useSWR from "swr";
 import fetcher from "../utils/fetcher";
-import YouTube from "react-youtube";
-import { opts } from "../utils/yt";
 
 export default function Home() {
   const { data } = useSWR("/tracks.json", fetcher);
@@ -15,27 +14,7 @@ export default function Home() {
         <title>YouBeat</title>
       </Head>
       <Header home />
-      <Layout>
-        <div className="divide-y divide-neutral-500">
-          {data ? (
-            data.map((v, i) => (
-              <div key={i}>
-                <YouTube
-                  className="mt-4"
-                  iframeClassName="w-full aspect-video"
-                  videoId={v.video}
-                  opts={opts}
-                />
-                <button className="py-2 bg-red-500 rounded-full w-full my-4">
-                  Играть
-                </button>
-              </div>
-            ))
-          ) : (
-            <div>Загрузка...</div>
-          )}
-        </div>
-      </Layout>
+      <Layout>{data && data.map((v, i) => <Card key={i} v={v} />)}</Layout>
     </>
   );
 }
