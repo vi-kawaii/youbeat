@@ -31,7 +31,7 @@ export default function New() {
                 opts={opts}
                 videoId={getYouTubeVideoId(videoURL)}
               />
-              <button className="bg-red-500 w-full rounded-full py-2">
+              <button className="bg-red-500 w-full rounded-full py-2 mt-6">
                 Создать
               </button>
             </>
