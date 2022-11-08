@@ -27,7 +27,7 @@ export default function New() {
           {getYouTubeVideoId(videoURL) && (
             <> 
               <YouTube
-                iframeClassName="w-full aspect-video"
+                iframeClassName="w-full aspect-video rounded-2xl"
                 opts={opts}
                 videoId={getYouTubeVideoId(videoURL)}
               />
