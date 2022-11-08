@@ -35,32 +35,28 @@ export default function Track({ id }) {
       </Head>
       <Header />
       <Layout>
-        <div className="flex flex-col h-[calc(100vh-180px)]">
-          <div className="flex-grow">
-            {mount && (
-              <YouTube
-                iframeClassName={classNames({
-                  "w-full aspect-video rounded-2xl": mount,
-                })}
-                videoId={data.find((v) => v.id === id).video}
-                opts={opts}
-              />
-            )}
-          </div>
-          <div className="flex gap-2 h-20">
-            <button className="font-bold select-none text-xl text-black bg-red-500 w-full rounded-full">
-              D
-            </button>
-            <button className="font-bold select-none text-xl text-black bg-yellow-500 w-full rounded-full">
-              F
-            </button>
-            <button className="font-bold select-none text-xl text-black bg-green-500 w-full rounded-full">
-              J
-            </button>
-            <button className="font-bold select-none text-xl text-black bg-blue-500 w-full rounded-full">
-              K
-            </button>
-          </div>
+        {mount && (
+          <YouTube
+            iframeClassName={classNames({
+              "w-full aspect-video rounded-2xl": mount,
+            })}
+            videoId={data.find((v) => v.id === id).video}
+            opts={opts}
+          />
+        )}
+        <div className="flex">
+          <button className="font-bold select-none text-xl text-black bg-red-500 w-full">
+            D
+          </button>
+          <button className="font-bold select-none text-xl text-black bg-yellow-500 w-full">
+            F
+          </button>
+          <button className="font-bold select-none text-xl text-black bg-green-500 w-full">
+            J
+          </button>
+          <button className="font-bold select-none text-xl text-black bg-blue-500 w-full">
+            K
+          </button>
         </div>
       </Layout>
     </>
