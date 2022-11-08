@@ -17,25 +17,25 @@ export default function New() {
       </Head>
       <Header />
       <Layout>
-        <div className="flex flex-col h-[calc(100vh-180px)]">
-          <div className="flex-grow">
-            <input
-              className="rounded-full py-2 px-4 w-full mb-6 mt-6 bg-neutral-700"
-              placeholder="Ссылка на видео"
-              onChange={changeVideoURL}
-              value={videoURL}
-            />
-            {getYouTubeVideoId(videoURL) && (
+        <div className="flex-grow">
+          <input
+            className="rounded-full py-2 px-4 w-full mb-6 mt-6 bg-neutral-700"
+            placeholder="Ссылка на видео"
+            onChange={changeVideoURL}
+            value={videoURL}
+          />
+          {getYouTubeVideoId(videoURL) && (
+            <> 
               <YouTube
                 iframeClassName="w-full aspect-video"
                 opts={opts}
                 videoId={getYouTubeVideoId(videoURL)}
               />
-            )}
-          </div>
-          <button className="bg-red-500 w-full rounded-full py-2">
-            Создать
-          </button>
+              <button className="bg-red-500 w-full rounded-full py-2">
+                Создать
+              </button>
+            </>
+          )}
         </div>
       </Layout>
     </>
