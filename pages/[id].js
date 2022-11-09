@@ -5,8 +5,6 @@ import Layout from "../components/Layout";
 import fetcher from "../utils/fetcher";
 import YouTube from "react-youtube";
 import { opts } from "../utils/yt";
-import { useEffect, useState } from "react";
-import classNames from "classnames";
 import {
   ChevronDoubleDownIcon,
   ChevronDoubleLeftIcon,
@@ -24,14 +22,8 @@ export default function Track({ id }) {
     fetcher
   );
 
-  const [mount, setMount] = useState(false);
-
-  useEffect(() => {
-    setMount(true);
-  }, []);
-
   if (!data) {
-    return "Загрузка...";
+    return null;
   }
 
   return (
@@ -41,15 +33,11 @@ export default function Track({ id }) {
       </Head>
       <Header />
       <Layout>
-        {mount && (
-          <YouTube
-            iframeClassName={classNames({
-              "w-full aspect-video rounded-2xl": mount,
-            })}
-            videoId={data.find((v) => v.id === id).video}
-            opts={opts}
-          />
-        )}
+        <YouTube
+          iframeClassName="w-full aspect-video rounded-2xl"
+          videoId={data.find((v) => v.id === id).video}
+          opts={opts}
+        />
         <div className="flex gap-4 mt-6">
           <button className="border-2 rounded-2xl border-red-500 w-full h-44">
             <ChevronDoubleLeftIcon className="w-8 stroke-red-500 mx-auto" />
