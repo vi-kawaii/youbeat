@@ -4,7 +4,7 @@ import Head from "next/head";
 import { useState } from "react";
 import YouTube from "react-youtube";
 import getYouTubeVideoId, { opts } from "../utils/yt";
-import { CursorArrowRaysIcon } from "@heroicons/react/24/outline";
+import { CursorArrowRaysIcon, ArrowUpTrayIcon } from "@heroicons/react/24/outline";
 
 export default function New() {
   const [videoURL, setVideoURL] = useState("");
@@ -38,7 +38,7 @@ export default function New() {
                   Нажимайте в ритм
                 </button>
                 <button className="flex bg-blue-500 block rounded-full py-2 px-4 mt-6">
-                  <CursorArrowRaysIcon className="w-6 mr-2" />
+                  <ArrowUpTrayIcon className="w-6 mr-2" />
                   Сохранить с ритмом {120} BPM
                 </button>
               </div>

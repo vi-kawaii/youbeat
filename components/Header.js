@@ -49,7 +49,6 @@ export default function Header({ home }) {
           />
         </g>
       </svg>
-
       <span className="font-bold text-lg ml-2">YouBeat</span>
       <div className="ml-auto">
         {home ? (
