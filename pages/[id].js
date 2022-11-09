@@ -7,6 +7,12 @@ import YouTube from "react-youtube";
 import { opts } from "../utils/yt";
 import { useEffect, useState } from "react";
 import classNames from "classnames";
+import {
+  ChevronDoubleDownIcon,
+  ChevronDoubleLeftIcon,
+  ChevronDoubleRightIcon,
+  ChevronDoubleUpIcon,
+} from "@heroicons/react/24/outline";
 
 export default function Track({ id }) {
   const { data } = useSWR("/tracks.json", fetcher);
@@ -44,18 +50,18 @@ export default function Track({ id }) {
             opts={opts}
           />
         )}
-        <div className="flex">
-          <button className="font-bold select-none text-xl text-black bg-red-500 w-full">
-            D
+        <div className="flex gap-4 mt-6">
+          <button className="border-2 rounded-2xl border-red-500 w-full h-44">
+            <ChevronDoubleLeftIcon className="w-8 stroke-red-500 mx-auto" />
           </button>
-          <button className="font-bold select-none text-xl text-black bg-yellow-500 w-full">
-            F
+          <button className="border-2 rounded-2xl border-yellow-500 w-full h-44">
+            <ChevronDoubleUpIcon className="w-8 stroke-yellow-500 mx-auto" />
           </button>
-          <button className="font-bold select-none text-xl text-black bg-green-500 w-full">
-            J
+          <button className="border-2 rounded-2xl border-green-500 w-full h-44">
+            <ChevronDoubleDownIcon className="w-8 stroke-green-500 mx-auto" />
           </button>
-          <button className="font-bold select-none text-xl text-black bg-blue-500 w-full">
-            K
+          <button className="border-2 rounded-2xl border-blue-500 w-full h-44">
+            <ChevronDoubleRightIcon className="w-8 stroke-blue-500 mx-auto" />
           </button>
         </div>
       </Layout>

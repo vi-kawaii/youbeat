@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpTrayIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { ArrowUpTrayIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 
 export default function Header({ home }) {
   return (
@@ -50,7 +50,7 @@ export default function Header({ home }) {
         </g>
       </svg>
 
-      <span className="font-bold ml-3">YouBeat</span>
+      <span className="font-bold text-lg ml-2">YouBeat</span>
       <div className="ml-auto">
         {home ? (
           <Link href="/new">
@@ -58,7 +58,7 @@ export default function Header({ home }) {
           </Link>
         ) : (
           <Link href="/">
-            <XMarkIcon className="w-6" />
+            <ChevronDownIcon className="w-6" />
           </Link>
         )}
       </div>
