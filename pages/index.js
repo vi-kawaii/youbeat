@@ -14,7 +14,11 @@ export default function Home() {
         <title>YouBeat</title>
       </Head>
       <Header home />
-      <Layout>{data && data.map((v, i) => <Card key={i} v={v} />)}</Layout>
+      <Layout>
+        <div className="grid sm:grid-cols-2 gap-4">
+          {data && data.map((v, i) => <Card key={i} v={v} />)}
+        </div>
+      </Layout>
     </>
   );
 }

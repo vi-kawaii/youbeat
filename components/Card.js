@@ -20,7 +20,7 @@ export default function Card({ v }) {
   }
 
   return (
-    <Link href={`/${v.id}`} className="block first:pt-0">
+    <Link href={`/${v.id}`}>
       <div className="relative aspect-video">
         <Image
           className="rounded-2xl"

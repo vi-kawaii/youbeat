@@ -1,24 +1,10 @@
 [
   {
     "id": "xxx",
-    "video": "yLYNCqTy5iU",
-    "markers": [
-      {
-        "button": 1,
-        "from": 12,
-        "to": 14
-      }
-    ]
+    "video": "yLYNCqTy5iU"
   },
   {
     "id": "yyy",
-    "video": "NvZblFY5P9E",
-    "markers": [
-      {
-        "button": 1,
-        "from": 12,
-        "to": 14
-      }
-    ]
+    "video": "NvZblFY5P9E"
   }
 ]
