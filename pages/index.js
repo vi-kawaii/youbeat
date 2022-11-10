@@ -26,7 +26,7 @@ export default function Home() {
     if (getYouTubeVideoId(videoURL)) {
       setHistory((h) => [...h.filter((v) => v !== videoURL), videoURL]);
     }
-  }, [videoURL]);
+  }, [videoURL, setHistory]);
 
   useEffect(() => {
     setMount(true);
