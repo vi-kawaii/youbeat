@@ -76,7 +76,8 @@ export default function Home() {
           {getYouTubeVideoId(videoURL) && (
             <>
               <YouTube
-                iframeClassName="w-full aspect-video rounded-2xl"
+                className="aspect-w-16 aspect-h-9"
+                iframeClassName="rounded-2xl"
                 videoId={getYouTubeVideoId(videoURL)}
                 onReady={onReady}
                 onPause={onPause}
