@@ -5,13 +5,14 @@ export default function PlayPanel() {
 
   return (
     <div className="my-6 h-52 bg-neutral-800 rounded-2xl overflow-auto">
-      {random.map((group) => (
-        <div className="flex gap-4">
-          {group.map((pad) =>
+      {random.map((group, i) => (
+        <div className="flex gap-4" key={i}>
+          {group.map((pad, j) =>
             pad === 0 ? (
-              <div className="w-full"></div>
+              <div className="w-full" key={j}></div>
             ) : (
               <button
+                key={j}
                 className={`${
                   colors[Math.floor(Math.random() * colors.length)]
                 } ${pad === 2 ? "h-[416px]" : "h-[208px]"} w-full rounded-2xl`}
