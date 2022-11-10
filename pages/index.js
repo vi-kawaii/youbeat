@@ -35,7 +35,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Новый трек - YouBeat</title>
+        <title>YouBeat</title>
       </Head>
       <Header />
       <Layout>
