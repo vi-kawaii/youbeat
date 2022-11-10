@@ -13,7 +13,7 @@ export default function Card({ videoURL, onChangeVideo }) {
 
   const onClick = () => {
     onChangeVideo(videoURL);
-    scrollTo(0, 0);
+    scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
 
   if (!data) {

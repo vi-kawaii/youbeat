@@ -22,6 +22,8 @@ export default function Home() {
   const [rerender, setRerender] = useState(false);
   const [playMode, setPlayMode] = useState(false);
   const [duration, setDuration] = useState(0);
+  const [ready, setReady] = useState(false);
+  const [pause, setPause] = useState(true);
   const playerRef = useRef();
 
   const changeVideoURL = ({ target: { value } }) => {
@@ -44,7 +46,10 @@ export default function Home() {
   const onReady = ({ target }) => {
     playerRef.current = target;
     setDuration(target.getDuration());
+    setReady(true);
   };
+  const onPlay = () => setPause(false);
+  const onPause = () => setPause(true);
 
   useEffect(() => {
     if (getYouTubeVideoId(videoURL)) {
@@ -76,9 +81,22 @@ export default function Home() {
                 iframeClassName="w-full aspect-video rounded-2xl"
                 videoId={getYouTubeVideoId(videoURL)}
                 onReady={onReady}
+                onPause={onPause}
+                onPlay={onPlay}
+                opts={{
+                  playerVars: {
+                    disablekb: 1,
+                    controls: 0,
+                  },
+                }}
               />
               {playMode ? (
-                <PlayPanel bpm={Math.round(counter.bpm)} duration={duration} />
+                <PlayPanel
+                  bpm={Math.round(counter.bpm)}
+                  duration={duration}
+                  ready={ready}
+                  pause={pause}
+                />
               ) : (
                 <div className="flex flex-col sm:flex-row justify-between w-full mb-6">
                   <button
@@ -88,13 +106,15 @@ export default function Home() {
                     <CursorArrowRaysIcon className="w-6 mr-2" />
                     Набить ритм
                   </button>
-                  <button
-                    onClick={play}
-                    className="flex bg-red-500 block rounded-full py-2 px-4 mt-6"
-                  >
-                    <PlayIcon className="w-6 mr-2" />
-                    Играть с ритмом {Math.round(counter.bpm)} BPM
-                  </button>
+                  {counter.bpm !== 0 && (
+                    <button
+                      onClick={play}
+                      className="flex bg-red-500 block rounded-full py-2 px-4 mt-6"
+                    >
+                      <PlayIcon className="w-6 mr-2" />
+                      Играть с ритмом {Math.round(counter.bpm)} BPM
+                    </button>
+                  )}
                 </div>
               )}
             </>
@@ -102,7 +122,7 @@ export default function Home() {
         </div>
         {mount && history.length !== 0 && (
           <>
-            <div className="text-xl font-bold mb-6">Недавно просмотренные</div>
+            <div className="text-xl font-bold mb-6">История</div>
             <div className="grid sm:grid-cols-3 gap-4">
               {history
                 .slice()

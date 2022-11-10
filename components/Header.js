@@ -1,6 +1,6 @@
 export default function Header() {
   return (
-    <div className="flex items-center justify-center py-2 max-w-screen-md mx-auto px-4">
+    <div className="flex items-center justify-center max-w-screen-md mx-auto">
       <svg
         version="1.0"
         xmlns="http://www.w3.org/2000/svg"
