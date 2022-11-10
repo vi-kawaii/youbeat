@@ -32,6 +32,7 @@ export default function Home() {
   const changeVideo = (v) => {
     setPlayMode(false);
     setVideoURL(v);
+    counter.reset();
   };
   const tap = () => {
     setRerender(!rerender);
