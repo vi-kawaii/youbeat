@@ -45,7 +45,10 @@ export default function PlayPanel({ bpm, ready, pause }) {
     ready && !pause ? (60 / bpm) * 1000 : null
   );
 
-  const onClick = () => setScore((s) => s + 1);
+  const onClick = (e) => {
+    setScore((s) => s + 1);
+    e.target.disabled = true;
+  };
 
   return (
     <>
