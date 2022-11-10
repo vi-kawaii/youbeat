@@ -28,6 +28,7 @@ export default function Home() {
   const changeVideoURL = ({ target: { value } }) => {
     setPlayMode(false);
     setVideoURL(value);
+    counter.reset();
   };
   const changeVideo = (v) => {
     setPlayMode(false);
