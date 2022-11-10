@@ -1,9 +1,6 @@
-import Link from "next/link";
-import { ArrowUpTrayIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
-
-export default function Header({ home }) {
+export default function Header() {
   return (
-    <div className="flex items-center py-2 max-w-screen-md mx-auto px-4">
+    <div className="flex items-center justify-center py-2 max-w-screen-md mx-auto px-4">
       <svg
         version="1.0"
         xmlns="http://www.w3.org/2000/svg"
@@ -50,17 +47,6 @@ export default function Header({ home }) {
         </g>
       </svg>
       <span className="font-bold text-lg ml-2">YouBeat</span>
-      <div className="ml-auto">
-        {home ? (
-          <Link href="/new">
-            <ArrowUpTrayIcon className="w-6" />
-          </Link>
-        ) : (
-          <Link href="/">
-            <ChevronDownIcon className="w-6" />
-          </Link>
-        )}
-      </div>
     </div>
   );
 }
