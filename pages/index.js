@@ -4,13 +4,13 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 import YouTube from "react-youtube";
 import getYouTubeVideoId, { opts } from "../utils/yt";
-import {
-  CursorArrowRaysIcon,
-  PlayIcon,
-} from "@heroicons/react/24/outline";
+import { CursorArrowRaysIcon, PlayIcon } from "@heroicons/react/24/outline";
 import { useAtom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
 import Card from "../components/Card";
+import { Counter } from "bpm-counter";
+
+const counter = new Counter();
 
 const historyAtom = atomWithStorage("history", []);
 
@@ -18,9 +18,14 @@ export default function Home() {
   const [videoURL, setVideoURL] = useState("");
   const [history, setHistory] = useAtom(historyAtom);
   const [mount, setMount] = useState(false);
+  const [rerender, setRerender] = useState(false);
 
   const changeVideoURL = ({ target: { value } }) => setVideoURL(value);
   const changeVideo = (v) => setVideoURL(v);
+  const tap = () => {
+    setRerender(!rerender);
+    counter.tap();
+  };
 
   useEffect(() => {
     if (getYouTubeVideoId(videoURL)) {
@@ -54,13 +59,16 @@ export default function Home() {
                 videoId={getYouTubeVideoId(videoURL)}
               />
               <div className="flex flex-col sm:flex-row justify-between w-full mb-6">
-                <button className="flex bg-neutral-500 block rounded-full py-2 px-4 mt-6 active:bg-neutral-600">
+                <button
+                  onClick={tap}
+                  className="flex bg-neutral-500 block rounded-full py-2 px-4 mt-6 active:bg-neutral-600"
+                >
                   <CursorArrowRaysIcon className="w-6 mr-2" />
                   Набить ритм
                 </button>
                 <button className="flex bg-red-500 block rounded-full py-2 px-4 mt-6">
                   <PlayIcon className="w-6 mr-2" />
-                  Играть с ритмом {120} BPM
+                  Играть с ритмом {Math.round(counter.bpm)} BPM
                 </button>
               </div>
             </>
