@@ -50,6 +50,7 @@ export default function Home() {
   };
   const onPlay = () => setPause(false);
   const onPause = () => setPause(true);
+  const onError = () => setHistory((h) => h.filter((v) => v !== videoURL));
 
   useEffect(() => {
     if (getYouTubeVideoId(videoURL)) {
@@ -84,6 +85,7 @@ export default function Home() {
                 onReady={onReady}
                 onPause={onPause}
                 onPlay={onPlay}
+                onError={onError}
                 opts={{
                   playerVars: {
                     disablekb: 1,
