@@ -21,7 +21,6 @@ export default function Home() {
   const [mount, setMount] = useState(false);
   const [rerender, setRerender] = useState(false);
   const [playMode, setPlayMode] = useState(false);
-  const [duration, setDuration] = useState(0);
   const [ready, setReady] = useState(false);
   const [pause, setPause] = useState(true);
   const playerRef = useRef();
@@ -45,7 +44,6 @@ export default function Home() {
   };
   const onReady = ({ target }) => {
     playerRef.current = target;
-    setDuration(target.getDuration());
     setReady(true);
   };
   const onPlay = () => setPause(false);
@@ -93,7 +91,6 @@ export default function Home() {
               {playMode ? (
                 <PlayPanel
                   bpm={Math.round(counter.bpm)}
-                  duration={duration}
                   ready={ready}
                   pause={pause}
                 />
