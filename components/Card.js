@@ -11,7 +11,10 @@ export default function Card({ videoURL, onChangeVideo }) {
     fetcher
   );
 
-  const onClick = () => onChangeVideo(videoURL);
+  const onClick = () => {
+    onChangeVideo(videoURL);
+    scrollTo(0, 0);
+  };
 
   if (!data) {
     return null;

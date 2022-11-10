@@ -21,6 +21,7 @@ export default function Home() {
   const [mount, setMount] = useState(false);
   const [rerender, setRerender] = useState(false);
   const [playMode, setPlayMode] = useState(false);
+  const [duration, setDuration] = useState(0);
   const playerRef = useRef();
 
   const changeVideoURL = ({ target: { value } }) => {
@@ -40,7 +41,10 @@ export default function Home() {
     playerRef.current.playVideo();
     setPlayMode(true);
   };
-  const onReady = ({ target }) => (playerRef.current = target);
+  const onReady = ({ target }) => {
+    playerRef.current = target;
+    setDuration(target.getDuration());
+  };
 
   useEffect(() => {
     if (getYouTubeVideoId(videoURL)) {
@@ -74,7 +78,7 @@ export default function Home() {
                 onReady={onReady}
               />
               {playMode ? (
-                <PlayPanel />
+                <PlayPanel bpm={Math.round(counter.bpm)} duration={duration} />
               ) : (
                 <div className="flex flex-col sm:flex-row justify-between w-full mb-6">
                   <button
