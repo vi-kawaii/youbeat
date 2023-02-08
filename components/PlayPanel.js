@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useInterval from "../utils/useInterval";
 import { StarIcon } from "@heroicons/react/24/outline";
+import { motion, useSpring } from "framer-motion";
 
 const bgColors = ["bg-red-500", "bg-yellow-500", "bg-green-500", "bg-blue-500"];
 const textColors = [
@@ -21,6 +22,14 @@ export default function PlayPanel({ bpm, ready, pause }) {
   const [padIndex, setPadIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [scoreColor, setScoreColor] = useState(0);
+  const [beat, setBeat] = useState(100);
+
+  useInterval(
+    () => {
+      setBeat((b) => (b === 100 ? 50 : 100));
+    },
+    ready && !pause ? (60 / bpm) * 500 : null
+  );
 
   useInterval(
     () => {
@@ -64,11 +73,13 @@ export default function PlayPanel({ bpm, ready, pause }) {
           padIndex !== i ? (
             <div className="w-full" key={i}></div>
           ) : (
-            <button
+            <motion.button
               onClick={onClick}
               key={i}
               className={`${padColor} h-[208px] w-full rounded-2xl`}
-            ></button>
+              animate={{ scale: beat / 100}}
+              transition={{delay: 0.002}}
+            ></motion.button>
           )
         )}
       </div>
